@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS work 1</title>
+</head>
+<body>
+    <style>
+        *{
+           margin: 0px;
+           padding: 0px;
+        }
+        body{
+            width: 100%;
+            height: 660px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+     
+        }
+        tr{
+            width: 100%;
+        }
+      td{
+        width: 400px;
+      }
+        
+        tr td:first-child
+        {
+            font-size: 24px;
+            width: 30%;
+            
+        }
+        input{
+            height: 30px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 18px;
+            padding-left: 10px;
+
+        }
+     button{
+    
+     padding: 6px;
+     border-radius: 5px;
+     }
+     table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+}
+        
+        
+    </style>
+
+    <form action="" onsubmit="return check()">
+    <table>
+
+
+            <tr>
+                <td><p>Age</p></td>
+                <td><input type="text" id="age" name="age" placeholder="Enter your age"></td>
+            </tr>
+            <tr>
+                <td><p>Weight</p></td>
+                <td><input type="text" id="weight" name="weight" placeholder="enter your weight"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+
+
+      </table>
+    </form>
+    <div style="margin:10px;font-size: 22px;font-weight: 800; ">
+        <p   id="notify"></p>
+    </div>
+    <script>
+        function check()
+        {
+                var age=document.getElementById('age').value;
+                var weight=document.getElementById('weight').value;
+                // alert(age+" "+weight);
+                if(age>=5&&age<=7)
+                {
+                    if(weight>=15&&weight<=20)
+                    {
+                        document.getElementById('notify').innerHTML='Keep it Up!.';
+                        document.getElementById('notify').style.color='green';
+                    }
+                    else if(weight>20)
+                    {
+                        
+                        document.getElementById('notify').innerHTML='You are overweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    else{
+                        document.getElementById('notify').innerHTML='You are underweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    }
+                    else if(age>=8&&age<=10)
+                {
+                    if(weight>=21&&weight<=25)
+                    {
+                        document.getElementById('notify').innerHTML='Keep it Up!.';
+                        document.getElementById('notify').style.color='green';
+                    }
+                    else if(weight>25)
+                    {
+                        
+                        document.getElementById('notify').innerHTML='You are overweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    else{
+                        document.getElementById('notify').innerHTML='You are underweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    }
+                    else if(age>=11&&age<=15)
+                {
+                    if(weight>=26&&weight<=30)
+                    {
+                        document.getElementById('notify').innerHTML='Keep it Up!.';
+                        document.getElementById('notify').style.color='green';
+                    }
+                    else if(weight>30)
+                    {
+                        
+                        document.getElementById('notify').innerHTML='You are overweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    else{
+                        document.getElementById('notify').innerHTML='You are underweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    }
+                    else if(age>=16&&age<=20)
+                {
+                    if(weight>=31&&weight<=40)
+                    {
+                        document.getElementById('notify').innerHTML='Keep it Up!.';
+                        document.getElementById('notify').style.color='green';
+                    }
+                    else if(weight>40)
+                    {
+                        
+                        document.getElementById('notify').innerHTML='You are overweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    else{
+                        document.getElementById('notify').innerHTML='You are underweight';
+                        document.getElementById('notify').style.color='red';
+                    }
+                    }
+                    else{
+                        document.getElementById('notify').innerHTML='Enter Valid Details';
+                        document.getElementById('notify').style.color='red';
+                    }
+                return false;
+        }
+    </script>
+
+
+       
+
+</body>
+</html>
