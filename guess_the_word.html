@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the word</title>
+</head>
+<style>
+    body{
+        margin: 0px;
+        padding: 0px;
+        height: 730px;
+        display: flex;
+        justify-content: center;
+    }
+    .container{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        padding-top: 20px;
+        background-color: honeydew;
+    }
+    p{
+        font-size: 25px;
+    }
+    #word,.remaining{
+        width: 400px;
+        height: 100px;
+        color: rgb(27, 114, 114);
+        font-size: 34px;
+        font-weight: 900;
+        display: flex;
+        justify-content: space-evenly;
+    }
+</style>
+<body onclick="rotate(this.id)" id="0" >
+    <div class="container">
+       <img src="unnamed.png" id="img" style="height: 200px;width: 200px;" alt="">
+       <p id="pop">good guess the word has letter Y.</p>
+     <!--hidden words  -->
+       <div id="word"> </div>
+       
+
+         <p id="remAtt" style="color:black;text-align: center;"></p>
+
+         <!-- chosed words -->
+
+        <div class="remaining"style="justify-content:center">
+            <p  id="remaining"  style="color:black"></p>
+       
+       </div>
+        <form action="#" style="display: flex;flex-direction: column;">
+            <input type="text" style="height: 50px;width:100px;font-size: 30px;"  name="" id="input">
+       <button onclick="process()" type="submit" style="background-color: orange;color: white;border-radius: 20px; border: none;height: 50px;width: 100px;margin-top: 20px;">Guess</button>
+  
+        </form>
+         </div>
+    <h4 id="tring" style="display: none;" ></h4>
+    <h3 id="ctring" style="display: none;" ></h3>
+
+</body>
+
+
+<!-- script -->
+
+<script>
+function rotate(counter)
+{  counter=parseInt(counter);
+    cnt=counter+10;
+   document.querySelector("#img").style.transform = "rotate("+cnt+"deg)";
+    document.getElementById(counter).id=cnt;
+}
+  window.onload = function(){  
+    const arr=["IRONMAN","HULK","THOR","ANTMAN","SPIDERMAN","SUPERMAN","BATMAN","GROOT","THANOS"];
+    let length=arr.length-1;
+    let x = Math.random() * length;
+    x=parseInt(x);
+    document.getElementById('tring').innerText=arr[x];
+    document.getElementById('ctring').id=arr[x];
+      for(i=0;i<arr[x].length;i++)
+    {
+        var temp="<p id='ch"+i+"'>_</p>";
+        document.getElementById("word").innerHTML+=temp;
+    }
+    var nn=arr[x].length+1;
+    var hh="You have "+nn+ " attempts remaining.";
+    // alert(hh);
+    document.getElementById('remAtt').innerText=hh;
+ }  
+ function process()
+    {
+        var input=document.getElementById('input').value;
+        input=input.toUpperCase();
+        
+       if(input.length>1)
+       {
+        alert("input single character at one time.")
+       }
+       else
+       {
+        
+
+        // var xp="<p style='color;black;text-align:center'>"+input+"</p>";
+        var words=document.getElementById('remaining').innerText.length;
+        // alert()
+        if(((document.getElementById('tring').innerText.length+1)-words-1)!=0)
+        { 
+      
+
+         document.getElementById('remaining').innerText+=input;
+    
+        var txt=document.getElementById('tring').innerText;
+        // txt = txt.split('');
+
+        var len=txt.length;
+        for(i=0;i<len;i++)
+        {
+            if(input==txt[i])
+            {
+                document.getElementById('ch'+i).innerText=input;
+                document.getElementById('pop').innerText="Good guess the word has latter "+input;
+                // txt[i]='0';
+                // document.getElementById('tring').innerText=txt.join("");
+                // document.getElementById('ch'+i).id="commited";
+                // break;
+            }
+            else{
+                document.getElementById('pop').innerText="Wrong guess attempt failed";
+            }
+        }
+      
+        words=(txt.length)-words;
+        // alert(words);
+        
+     
+        var toast="You have "+words+ " attempts remaining.";
+        document.getElementById('remAtt').innerText=toast;
+        var fp="";
+       for(j=0 ; j<txt.length;j++)
+       {
+        fp+=document.getElementById('ch'+j).innerText;
+
+       }
+//  alert(document.getElementById('ch'+j).innerText);
+        if(fp==txt)
+       {
+        // alert('hello');
+        document.write("You WIN the Game buddy!");
+       }
+       }
+      
+       else{
+        document.write("You loose the Game buddy!");
+    }
+    }
+   
+
+    }
+    </script>
+</html>
